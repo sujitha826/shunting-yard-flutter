@@ -6,7 +6,11 @@ final class ShuntingYardInitial extends ShuntingYardState {}
 
 final class OnRunState extends ShuntingYardState {
   final double result;
-  OnRunState({required this.result});
+  final String exp;
+  OnRunState({required this.result, required this.exp});
 }
 
-final class ErrorState extends ShuntingYardState {}
+final class ErrorState extends ShuntingYardState {
+  final String? errMsg;
+  ErrorState({this.errMsg});
+}

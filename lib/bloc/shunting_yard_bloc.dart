@@ -6,7 +6,18 @@ part 'shunting_yard_state.dart';
 
 class ShuntingYardBloc extends Bloc<ShuntingYardEvent, ShuntingYardState> {
   ShuntingYardBloc() : super(ShuntingYardInitial()) {
-   // on<OnRunEvent>(onRunEvent);
-  }
+    on<OnRunEvent>((event, emit) {
+      try {
+        List<String> postfixExpression = ShuntingYard.shuntingYard(event.exp);
+        final result = ShuntingYard.evaluatePostfix(postfixExpression);
+        emit(OnRunState(result: result, exp: event.exp));
+      } catch (e) {
+        emit(ErrorState(errMsg: e.toString()));
+      }
+    });
 
+    on<ResetEvent>((event, emit) {
+      emit(ShuntingYardInitial());
+    });
+  }
 }

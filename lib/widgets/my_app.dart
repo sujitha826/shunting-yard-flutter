@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shunting_yard_flutter/screens/home_screen.dart';
+import 'package:shunting_yard_flutter/screens/home_bloc_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       title: 'Shunting Yard Algorithm',
-      home: const HomeScreen(),
+      home: const HomeBlocScreen(),
     );
   }
 }
