@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:shunting_yard_flutter/constants/app_constants.dart';
 import 'package:shunting_yard_flutter/bloc/shunting_yard_bloc.dart';
+import 'package:shunting_yard_flutter/screens/app_utils.dart';
 
 class HomeBlocScreen extends StatefulWidget {
   const HomeBlocScreen({super.key});
@@ -32,12 +33,15 @@ class _HomeScreenState extends State<HomeBlocScreen> {
     return BlocProvider(
       create: (context) => ShuntingYardBloc(),
       child: Scaffold(
+        backgroundColor: colorWhite,
         appBar: AppBar(
           title: Text(
             TextConstants.appTitle,
+            style: const TextStyle(
+                fontFamily: 'Montserrat', fontWeight: FontWeight.normal),
           ),
           backgroundColor: const Color.fromARGB(96, 104, 58, 183),
-          foregroundColor: const Color.fromARGB(255, 185, 27, 27),
+          foregroundColor: const Color.fromARGB(255, 73, 19, 19),
         ),
         body: BlocConsumer<ShuntingYardBloc, ShuntingYardState>(
           listener: (context, state) {
@@ -74,6 +78,7 @@ class _HomeScreenState extends State<HomeBlocScreen> {
                     inputFormatters: const [],
                     decoration: _buildInputDecoration(),
                     onChanged: _handleInputChange,
+                    cursorColor: Colors.black,
                   ),
                   const SizedBox(
                     height: 10.0,
@@ -93,7 +98,10 @@ class _HomeScreenState extends State<HomeBlocScreen> {
                           child: Text(
                             TextConstants.run,
                             style: const TextStyle(
-                                fontSize: 18, color: Colors.deepPurple),
+                              fontSize: 18,
+                              color: Colors.black,
+                              fontFamily: 'Montserrat',
+                            ),
                           ),
                         ),
                       ),
@@ -110,7 +118,10 @@ class _HomeScreenState extends State<HomeBlocScreen> {
                           child: Text(
                             TextConstants.reset,
                             style: const TextStyle(
-                                fontSize: 18, color: Colors.deepPurple),
+                              fontSize: 18,
+                              color: Colors.black,
+                              fontFamily: 'Montserrat',
+                            ),
                           ),
                         ),
                       ),
@@ -125,6 +136,7 @@ class _HomeScreenState extends State<HomeBlocScreen> {
                         TextConstants.infix,
                         style: const TextStyle(
                           fontSize: 22,
+                          fontFamily: 'Montserrat',
                         ),
                       ),
                       Text(
@@ -136,8 +148,8 @@ class _HomeScreenState extends State<HomeBlocScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 20.0,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
                   ),
                   Row(
                     children: [
@@ -145,6 +157,7 @@ class _HomeScreenState extends State<HomeBlocScreen> {
                         TextConstants.result,
                         style: const TextStyle(
                           fontSize: 22,
+                          fontFamily: 'Montserrat',
                         ),
                       ),
                       Text(
@@ -195,6 +208,7 @@ class _HomeScreenState extends State<HomeBlocScreen> {
         ),
       ),
       border: const OutlineInputBorder(),
+      isDense: true,
       labelText: TextConstants.enterExpression,
     );
   }
